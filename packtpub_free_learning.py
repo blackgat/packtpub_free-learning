@@ -10,6 +10,7 @@ __version__ = '1.0'
 __DEBUG__ = False
 import signal
 import sys
+import time
 import argparse
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -23,6 +24,8 @@ def run(_user, _pass):
         print('There is no FireFox found at current system')
         return
 
+    driver.maximize_window()
+    
     # Dump page for debug
     if __DEBUG__:
         free_learning_page = driver.page_source
@@ -81,7 +84,6 @@ def run(_user, _pass):
     except:
         print("Unexpected error:", sys.exc_info()[0])
         return
-        pass
 
     # Whether bought or not bought, the final results are the same page
     # I think our action is finished, close browser.
@@ -106,7 +108,7 @@ def main(argv):
     _user = args.user
     _pass = args.password
 
-    run(_ptc, _user, _pass)
+    run(_user, _pass)
     pass
 
 def exit(signum, frame):
