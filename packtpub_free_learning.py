@@ -109,6 +109,9 @@ def main(argv):
     run(_ptc, _user, _pass)
     pass
 
+def exit(signum, frame):
+    sys.exit()
+
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, exit)
     main(sys.argv)
